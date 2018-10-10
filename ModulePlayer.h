@@ -23,7 +23,11 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation idle;
 	Animation backward;
+	Animation frontward;
+	Animation* AnimActual;
 	iPoint position;
+
+	float speed;
 };
 
 #endif // __MODULEPLAYER_H__
