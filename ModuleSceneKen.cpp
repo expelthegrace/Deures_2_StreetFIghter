@@ -44,6 +44,13 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	girl.frames.push_back({ 625, 144, 656 - 625,  71 - 16 });
 	girl.speed = 0.06f;
 
+	barcoFlotacio = 0;
+	maxBarcoFlotacio = 7;
+	direccio = 1;
+
+
+	framesAcc = 0;
+
 
 	// TODO 4: Setup Girl Animation from coordinates from ken_stage.png
 
@@ -63,7 +70,7 @@ bool ModuleSceneKen::Start()
 	// TODO 7: Enable the player module
 
 	// TODO 0: trigger background music
-	App->audio->PlayFx(backMusic, 1);
+	//App->audio->PlayFx(backMusic, 1);
 	
 	return true;
 }
@@ -82,6 +89,8 @@ bool ModuleSceneKen::CleanUp()
 // Update: draw background
 update_status ModuleSceneKen::Update()
 {
+	barcoFlotacio = (framesAcc) - maxBarcoFlotacio / 2;
+
 	// TODO 5: make sure the ship goes up and down
 
 	// Draw everything --------------------------------------
@@ -90,10 +99,10 @@ update_status ModuleSceneKen::Update()
 	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
 
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
-	App->renderer->Blit(graphics, 0, 0, &foreGround, 2.0f);
+	App->renderer->Blit(graphics, 0, 0 + barcoFlotacio, &foreGround, 2.0f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 192, 105, &(girl.GetCurrentFrame()), 2.0f);
+	App->renderer->Blit(graphics, 192, 105 + barcoFlotacio, &(girl.GetCurrentFrame()), 2.0f);
 
 
 	App->renderer->Blit(graphics, 0, 170, &ground);
@@ -103,6 +112,12 @@ update_status ModuleSceneKen::Update()
 
 	// TODO 11: Make that pressing space triggers a switch to honda logic module
 	// using FadeToBlack module
+
+	
+	framesAcc += (1 / 35.) * direccio; // divisor = velocitat de balanceig
+	if (framesAcc >= maxBarcoFlotacio) direccio *= -1;
+	else if (framesAcc <= 0) direccio *= -1;
+
 
 	return UPDATE_CONTINUE;
 }

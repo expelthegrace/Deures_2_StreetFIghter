@@ -19,6 +19,10 @@ public:
 
 public:
 	
+	float barcoFlotacio, maxBarcoFlotacio, direccio;
+		
+	float framesAcc;
+
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
