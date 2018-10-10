@@ -24,6 +24,8 @@ public:
 	SDL_Rect background;
 	SDL_Rect foreGround;
 
+	unsigned int backMusic;
+
 	Animation flag;
 	Animation girl;
 };

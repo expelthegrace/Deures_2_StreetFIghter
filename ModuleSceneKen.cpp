@@ -58,9 +58,12 @@ bool ModuleSceneKen::Start()
 	LOG("Loading ken scene");
 	
 	graphics = App->textures->Load("ken_stage.png");
+	backMusic = App->audio->LoadFx("./ken.wav");
 
 	// TODO 7: Enable the player module
+
 	// TODO 0: trigger background music
+	App->audio->PlayFx(backMusic, 1);
 	
 	return true;
 }
@@ -90,7 +93,7 @@ update_status ModuleSceneKen::Update()
 	App->renderer->Blit(graphics, 0, 0, &foreGround, 2.0f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 200 - 8, 105, &(girl.GetCurrentFrame()), 2.0f);
+	App->renderer->Blit(graphics, 192, 105, &(girl.GetCurrentFrame()), 2.0f);
 
 
 	App->renderer->Blit(graphics, 0, 170, &ground);
