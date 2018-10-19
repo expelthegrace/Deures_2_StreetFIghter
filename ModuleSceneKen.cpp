@@ -26,7 +26,6 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	foreGround.w = (530 - 8);
 	foreGround.h = (204 - 23);
 
-
 	// Background / sky
 	background.x = 72;
 	background.y = 208;
@@ -99,10 +98,10 @@ update_status ModuleSceneKen::Update()
 	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
 
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
-	App->renderer->Blit(graphics, 0, 0 + barcoFlotacio, &foreGround, 2.0f);
+	App->renderer->Blit(graphics, 0, 0 + barcoFlotacio, &foreGround, 1.05f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 192, 105 + barcoFlotacio, &(girl.GetCurrentFrame()), 2.0f);
+	App->renderer->Blit(graphics, 192, 105 + barcoFlotacio, &(girl.GetCurrentFrame()), 1.05f);
 
 
 	App->renderer->Blit(graphics, 0, 170, &ground);

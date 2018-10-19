@@ -13,6 +13,7 @@ class ModuleAudio;
 class ModuleFadeToBlack;
 class ModulePlayer;
 class ModuleSceneKen;
+class ModuleHonda;
 
 class Application
 {
@@ -34,6 +35,7 @@ public:
 	ModuleFadeToBlack* fade;
 	ModulePlayer* player;
 	ModuleSceneKen* scene_ken;
+	ModuleHonda* scene_honda;
 
 private:
 

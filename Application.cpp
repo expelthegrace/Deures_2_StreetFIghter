@@ -6,6 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneKen.h"
+#include "ModuleHonda.h"
 #include "ModulePlayer.h"
 
 using namespace std;
@@ -21,7 +22,9 @@ Application::Application()
 	modules.push_back(audio = new ModuleAudio());
 
 	// Game Modules
-	modules.push_back(scene_ken = new ModuleSceneKen(true));
+	//modules.push_back(scene_ken = new ModuleSceneKen(false));
+	modules.push_back(scene_honda = new ModuleHonda(true));
+
 	modules.push_back(player = new ModulePlayer(true));
 	modules.push_back(fade = new ModuleFadeToBlack());
 }
@@ -46,7 +49,7 @@ bool Application::Init()
 	}
 
 	// Start the first scene --
-	fade->FadeToBlack(scene_ken, nullptr, 3.0f);
+	//fade->FadeToBlack(scene_ken, nullptr, 3.0f);
 
 	return ret;
 }

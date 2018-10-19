@@ -73,11 +73,11 @@ bool ModulePlayer::CleanUp()
 // Update
 update_status ModulePlayer::Update()
 {
-	if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
 		AnimActual = &frontward;
 		position.x += speed;
 	}
-	else if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+	else if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
 		AnimActual = &backward;
 		position.x -= speed * 0.6;
 

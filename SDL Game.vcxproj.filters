@@ -55,6 +55,7 @@
     <ClInclude Include="ModuleInput.h">
       <Filter>Core Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleHonda.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -89,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Core Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleHonda.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

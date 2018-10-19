@@ -10,7 +10,7 @@ struct SDL_Texture;
 class ModuleSceneKen : public Module
 {
 public:
-	ModuleSceneKen( bool start_enabled = true);
+	ModuleSceneKen( bool start_enabled);
 	~ModuleSceneKen();
 
 	bool Start();
