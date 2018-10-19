@@ -37,6 +37,11 @@ public:
 	ModuleSceneKen* scene_ken;
 	ModuleHonda* scene_honda;
 
+	unsigned int backMusicKen;
+	unsigned int backMusicHonda;
+
+	escena_actual escenaAct;
+
 private:
 
 	std::list<Module*> modules;

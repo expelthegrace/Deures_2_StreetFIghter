@@ -64,12 +64,8 @@ bool ModuleSceneKen::Start()
 	LOG("Loading ken scene");
 	
 	graphics = App->textures->Load("ken_stage.png");
-	backMusic = App->audio->LoadFx("./ken.wav");
 
 	// TODO 7: Enable the player module
-
-	// TODO 0: trigger background music
-	//App->audio->PlayFx(backMusic, 1);
 	
 	return true;
 }
@@ -80,7 +76,7 @@ bool ModuleSceneKen::CleanUp()
 	LOG("Unloading ken scene");
 
 	App->textures->Unload(graphics);
-	App->player->Disable();
+	//App->player->Disable();
 	
 	return true;
 }

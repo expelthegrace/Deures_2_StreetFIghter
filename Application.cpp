@@ -22,7 +22,7 @@ Application::Application()
 	modules.push_back(audio = new ModuleAudio());
 
 	// Game Modules
-	//modules.push_back(scene_ken = new ModuleSceneKen(false));
+	modules.push_back(scene_ken = new ModuleSceneKen(true));
 	modules.push_back(scene_honda = new ModuleHonda(true));
 
 	modules.push_back(player = new ModulePlayer(true));
@@ -38,6 +38,7 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
+	escenaAct = ESCENA_KEN;
 
 	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
 		ret = (*it)->Init(); // we init everything, even if not anabled
@@ -48,8 +49,15 @@ bool Application::Init()
 			ret = (*it)->Start();
 	}
 
+	//backMusicHonda = App->audio->LoadFx("./honda.wav");
+	//backMusicKen = App->audio->LoadFx("./ken.wav");
+
 	// Start the first scene --
-	//fade->FadeToBlack(scene_ken, nullptr, 3.0f);
+	fade->FadeToBlack(scene_ken, nullptr, 3.0f);
+	App->audio->PlayMusic("./ken.wav");
+
+	scene_honda->Disable();
+
 
 	return ret;
 }
@@ -57,6 +65,19 @@ bool Application::Init()
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
+
+	if (input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !fade->isFading()) {
+		if (escenaAct == ESCENA_HONDA) {
+			escenaAct = ESCENA_KEN;
+			fade->FadeToBlack(scene_ken, scene_honda, 3.0f);
+			App->audio->PlayMusic("./ken.wav",0);
+		}
+		else {
+			escenaAct = ESCENA_HONDA;
+			fade->FadeToBlack(scene_honda, scene_ken, 3.0f);
+			App->audio->PlayMusic("./honda.wav",0);
+		}
+	}
 
 	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
 		if((*it)->IsEnabled() == true) 

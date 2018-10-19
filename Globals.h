@@ -14,6 +14,11 @@ enum update_status
 	UPDATE_ERROR
 };
 
+enum escena_actual {
+	ESCENA_KEN = 1,
+	ESCENA_HONDA
+};
+
 // Deletes a buffer
 #define RELEASE( x ) \
     {\

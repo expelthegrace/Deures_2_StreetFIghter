@@ -22,7 +22,7 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
-	SDL_Rect foreGround;
+	SDL_Rect banyera;
 	SDL_Rect sostre;
 
 
